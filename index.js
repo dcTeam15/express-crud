@@ -8,7 +8,7 @@ const produtoRoutes = require('./src/routes/produtoRoutes');
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Hello world Nathan');
+    res.send('Hello world');
 });
 
 app.use('/produtos', produtoRoutes);

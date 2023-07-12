@@ -1,4 +1,4 @@
-const produtos = [
+let produtos = [
     {
         nome: 'Boné',
         valor: 19.90
@@ -12,13 +12,25 @@ const produtos = [
 const listarProdutos = () => {
     return produtos;
 }
-const listarUmProduto = () => {}
+
+const listarUmProduto = (posicao) => {
+    return produtos[posicao];
+}
+
 const cadastrarProduto = (produto) => {
     produtos.push(produto);
+    return produto;
+}
+
+const editarProduto = (posicao, produto) => {
+    produtos[posicao] = produto;
+    return produtos[posicao];
+}
+
+const deletarProduto = (posicao) => {
+    produtos = produtos.filter((produto, index) => index != posicao);
     return produtos;
 }
-const editarProduto = () => {}
-const deletarProduto = () => {}
 
 module.exports = {
     listarProdutos,
