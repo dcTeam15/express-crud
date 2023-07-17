@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form onsubmit="login()">
+        <input type="email" id="email" placeholder="digite seu email">
+        <input type="password" id="senha" placeholder="*******">
+        <button type="submit">logar</button>
+    </form>
+
+    <script>
+        function login(){
+            event.preventDefault();
+            let usuario = {
+                email: email.value,
+                senha: senha.value
+            }
+
+            fetch('http://localhost:8000/usuario/login', {
+                method: 'POST',
+                headers: {
+                    "content-type": 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if(res.message){
+                    alert(res.message);
+                    return;
+                }
+                alert("token: "+ res.token);
+                sessionStorage.setItem('token', res.token);
+            })
+
+        }
+    </script>
+
+</body>
+</html>
